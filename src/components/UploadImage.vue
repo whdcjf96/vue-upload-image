@@ -25,16 +25,29 @@
     </div>
     <!--      프로그래스 바 끝-->
 
-<!--    미리보기 이미지 시작-->
+    <!--    미리보기 이미지 시작-->
     <div v-if="previewImage">
       <div>
-        <img class="preview my-3" :src="previewImage" alt="" />
+        <img class="preview my-3" :src="previewImage" alt=""/>
       </div>
     </div>
-<!--    끝-->
+    <!--    미리보기 이미지 끝-->
 
-    <div v-if="message" class="alert alert-secondary" role="alert"></div>
+    <div v-if="message" class="alert alert-secondary" role="alert">
+      {{ message }}
+    </div>
+
+    <!--    List(목록) 이미지 정보를 출력-->
+    <div class="card mt-3">
+      <div class="card-header">List of Image</div>
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item" v-for="(image,index) in imageInfo" :key="index">
+          <a :href="image.url">{{image.name}}</a>
+        </li>
+      </ul>
+    </div>
   </div>
+
 </template>
 
 <script>
